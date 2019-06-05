@@ -30,12 +30,12 @@ if(outputValue < 208){// Sets the sound value threshold to 224 (max is 255)
   Serial.print("\t ldr = "); // Labels serial monitor output  
   Serial.println(currentTimeMic); // Prints the time elapsed
   digitalWrite(ledPin, HIGH); //Turns on LED
-  delay(10); //AI samples at 10 ms
+  delay(100); //AI samples at 100 ms
   }
   else {
   digitalWrite(ledPin, LOW); //Turns off LED
 }
-  delay(10); //Perform loop every 10 millisecond
+  delay(1); //Perform loop every 1 millisecond
 
 
 }
