@@ -31,7 +31,6 @@ op <-  par(mfrow = c(2, 2))
 plot(fm)
 
 # Check the homogeneity of variance assumption
-library(car)
 leveneTest(RT ~ Modality * OS * Python, data = ai_data)
 
 # Check the normality assumpttion
@@ -67,3 +66,24 @@ ggplot(cell_means,
        aes(Modality, RT, linetype = Python, shape = Python, group = Python)) +
   geom_line() + geom_point(size = 3) +
   facet_wrap(~OS)
+
+library(ggridges)
+
+ggplot(ai_data, aes(x=RT, y=OS, color=OS)) +
+  geom_density_ridges(
+    jittered_points = TRUE, position = "raincloud",
+    alpha = 0.7, scale = 0.7
+  )
+
+
+ggplot(ai_data, aes(x=RT, y=Python, color=Python)) +
+  geom_density_ridges(
+    jittered_points = TRUE, position = "raincloud",
+    alpha = 0.7, scale = 0.7
+  )
+
+ggplot(ai_data, aes(x=RT, y=Modality, color=Modality)) +
+  geom_density_ridges(
+    jittered_points = TRUE, position = "raincloud",
+    alpha = 0.7, scale = 0.7
+  )
